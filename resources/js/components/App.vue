@@ -20,6 +20,9 @@
                             <router-link exact-active-class="active" to="/" class="nav-link">Inicio</router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link exact-active-class="active" to="/agenda" class="nav-link">Agenda</router-link>
+                        </li>
+                        <li class="nav-item">
                             <router-link exact-active-class="active" to="/paciente" class="nav-link">Pacientes</router-link>
                         </li>
                        

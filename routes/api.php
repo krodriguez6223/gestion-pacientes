@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\PacienteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\PacienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //rutas para el Crud de paciente,(Agregar, eliminar y mostrar)
 Route::resource('paciente', PacienteController::class)->only(['index', 'store', 'update', 'show', 'destroy']);
+
+//rutas para el agendamiento de pacientes
+Route::resource('agenda', AgendaController::class)->only(['index', 'store', 'update', 'show', 'destroy', 'pacientes']);
 
 //muestra todos los historial de todos los pacientes
 Route::get('/historial', [PacienteController::class, 'historial']);
