@@ -12,7 +12,7 @@ class AgendaController extends Controller
 
     public function index()
     {
-        $agendas = Agenda::with('paciente')->get();
+        $agendas = Agenda::with('paciente')->paginate(2);
         return response()->json($agendas);
     }
 

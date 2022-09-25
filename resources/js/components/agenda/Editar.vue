@@ -74,8 +74,7 @@
                 _method:"patch"
             },
             pacientes:[]
-           
-          
+
         }
     },
     mounted(){
