@@ -16,4 +16,10 @@ class Agenda extends Model
         'departamento',
         'paciente_id'
     ];
+
+    //relacion para obtener los pacientes que se le agenda la cita
+    public function Paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
 }

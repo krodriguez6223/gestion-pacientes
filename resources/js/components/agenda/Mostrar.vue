@@ -13,7 +13,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Cita</th>
                                     <th>Fecha</th>
                                     <th>Hora</th>
                                     <th>Paciente</th>
@@ -27,12 +27,12 @@
                                     <td>{{ agenda.id }}</td>
                                     <td>{{ agenda.fecha }}</td>
                                     <td>{{ agenda.hora}}</td>
-                                    <td>{{ agenda.paciente_id }}</td>
+                                    <td>{{ agenda.paciente.nombres }}</td>
                                     <td>{{ agenda.sintomas}}</td>
                                     <td>{{ agenda.departamento}}</td>
 
                                     <td>
-                                        <!--<router-link :to='{ name:"actualizarAgenda" , params:{ id:agenda.id } }' class="btn btn-success m-1">Editar</router-link>-->
+                                        <router-link :to='{ name:"actualizarAgenda" , params:{ id:agenda.id } }' class="btn btn-success m-1">Editar</router-link>
 
                                         <button type="button" @click="deleteagenda(agenda.id)" class="btn btn-danger">Eliminar</button>
                                     </td>

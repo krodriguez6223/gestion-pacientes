@@ -20,5 +20,4 @@ class Paciente extends Model
         'historial_id'
     ];
 
-
 }

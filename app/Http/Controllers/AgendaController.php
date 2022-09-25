@@ -12,12 +12,21 @@ class AgendaController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     
      */
+    /* public function pacienteHistorial(Paciente $paciente)
+    {
+        $historiales = Historial::where('paciente_id', $paciente->id)->get();
+        return response()->json($historiales);
+    } */
+
+
     public function index()
     {
-        $agendas = Agenda::all();
+        $agendas = Agenda::with('paciente')->get();
         return response()->json($agendas);
     }
+
     public function pacientes()
     {
         $pacientes = Paciente::all();
