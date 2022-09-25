@@ -26,9 +26,6 @@ class PacienteController extends Controller
         return response()->json($historiales);
     }
 
-   
-
-   
     public function store(Request $request)
     {   
          $pacientes = Paciente::create($request->post());

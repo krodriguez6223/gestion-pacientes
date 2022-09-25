@@ -43,9 +43,9 @@
                         <div class="mb-3">
                             <label class="form-label">Paciente</label>
                             <v-select 
-                                :options="agenda.paciente" 
+                                 :options="pacientes" 
                                 v-model="agenda.paciente_id"
-                                :reduce="(paciente) => agenda.paciente.id" label="paciente.nombres"  />
+                                :reduce="(paciente) => paciente.id" label="nombres"  />
                         </div>
 
                         <button type="submit" class="btn btn-primary">
@@ -64,6 +64,7 @@
    name:"actualizar-agenda",
     data(){
         return{
+            pacientes :[],
             agenda:{
                 fecha: "",
                 hora: "",
@@ -72,25 +73,43 @@
                 paciente_id:"",
                 _method:"patch"
             },
+            pacientes:[]
+           
           
         }
     },
     mounted(){
+
         this.mostraragenda()
-    }, 
+        this.getpacientes()
+    },
+     
     methods:{
+
         async mostraragenda(){
             await this.axios.get('/api/agenda/'+this.$route.params.id).then(response=>{
-                const { fecha, hora, sintomas, departamento, paciente_id, nombres} = response.data;
+                const { fecha, hora, sintomas, departamento} = response.data[0];
+                const { id} = response.data[0].paciente;
+
                 this.agenda.fecha = fecha;
                 this.agenda.hora = hora;
                 this.agenda.sintomas = sintomas;
-                this.agenda.paciente_id = paciente_id;
                 this.agenda.departamento = departamento;
-                console.log( response.data);
+                this.agenda.paciente_id = id;
                 
+                //console.log(response.data[0]);
             }).catch(error=>{
                 console.log(error)
+            })
+        },
+        async getpacientes(){
+            await this.axios.get('/api/paciente').then(response=>{
+                this.pacientes = response.data
+
+                console.log(response.data);
+            }).catch(error=>{
+                console.log(error)
+                this.pacientes = []
             })
         },
         async update(){
